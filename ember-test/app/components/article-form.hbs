@@ -1,0 +1,29 @@
+{{#unless this.article.isValid}}
+  <ul class="error-messages">
+    {{#each this.article.errors as |error|}}
+      <li data-test-article-form-error-item>{{error.attribute}} {{error.message}}</li>
+    {{/each}}
+  </ul>
+{{/unless}}
+<form>
+  <fieldset>
+    <fieldset class="form-group">
+      <Input type="text" class="form-control form-control-lg" placeholder="Record Title" @value={{this.article.title}}
+        data-test-article-form-input-title />
+    </fieldset>
+    <fieldset class="form-group">
+      <Input type="text" class="form-control" placeholder="What's this record about?"
+        @value={{this.article.description}} data-test-article-form-input-description />
+    </fieldset>
+    <fieldset class="form-group">
+      <Textarea class="form-control" rows="8" placeholder="Write your record"
+        @value={{this.article.body}} data-test-article-form-input-body />
+    </fieldset>
+    <fieldset class="form-group">
+    </fieldset>
+    <button class="btn btn-lg pull-xs-right btn-primary btn-block" type="button" disabled={{this.buttonIsDisabled}}
+      data-test-article-form-submit-button {{on "click" this.publishArticle}}>
+      {{if this.isSaving "Saving" "Publish"}} Article
+    </button>
+  </fieldset>
+</form>

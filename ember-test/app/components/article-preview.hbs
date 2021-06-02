@@ -1,0 +1,10 @@
+<div class="article-preview" data-test-article-preview={{@article.id}}>
+  <div class="article-meta">
+    <ArticleAuthor @author={{@article.author}} @updatedAt={{@article.updatedAt}} />
+  </div>
+  <LinkTo @route="articles.article" @model={{@article.id}} class="preview-link" data-test-article-title>
+    <h1>{{@article.title}}</h1>
+    <p>{{@article.description}}</p>
+    <span>Read more...</span>
+  </LinkTo>
+</div>

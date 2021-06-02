@@ -1,0 +1,58 @@
+<div class="article-page">
+
+  <div class="banner">
+    <div class="container">
+      <h1>{{ article.title }}</h1>
+
+      <app-article-meta [article]="article">
+
+          <span [hidden]="!canModify">
+          <a class="btn btn-sm btn-primary"
+             [routerLink]="['/editor', article.slug]">
+            <i class="ion-edit"></i> Edit Record
+          </a>
+
+          <button class="btn btn-sm btn-danger"
+            [ngClass]="{disabled: isDeleting}"
+            (click)="deleteArticle()">
+            <i class="ion-trash-a"></i> Delete Record
+          </button>
+        </span>
+
+      </app-article-meta>
+    </div>
+  </div>
+
+  <div class="container page">
+
+    <div class="row article-content">
+      <div class="col-md-12">
+
+        <div [innerHTML]="article.body | markdown"></div>
+
+      </div>
+    </div>
+
+    <hr />
+
+    <div class="article-actions">
+      <app-article-meta [article]="article">
+
+          <span [hidden]="!canModify">
+          <a class="btn btn-sm btn-primary"
+             [routerLink]="['/editor', article.slug]">
+            <i class="ion-edit"></i> Edit Record
+          </a>
+
+          <button class="btn btn-sm btn-danger"
+            [ngClass]="{disabled: isDeleting}"
+            (click)="deleteArticle()">
+            <i class="ion-trash-a"></i> Delete Record
+          </button>
+        </span>
+
+      </app-article-meta>
+    </div>
+
+  </div>
+</div>
